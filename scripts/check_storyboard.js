@@ -1,6 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  MAX_IMAGE_BYTES,
+  MAX_IMAGE_DATA_URL_CHARS,
+  MAX_IMAGES,
+  MAX_STORYBOARD_BODY_BYTES,
   parseImageDataUrl,
   parseModelJson,
   validateScenes,
@@ -117,6 +121,15 @@ test('parseImageDataUrl checks declared MIME against file bytes', () => {
   assert.equal(parseImageDataUrl(TINY_PNG)?.mediaType, 'image/png');
   assert.equal(parseImageDataUrl(TINY_PNG.replace('image/png', 'image/jpeg')), null);
   assert.equal(parseImageDataUrl('data:image/gif;base64,R0lGODlhAQABAAAAACw='), null);
+});
+
+test('six images at the size cap fit under the request body limit', () => {
+  const oneImage = MAX_IMAGE_DATA_URL_CHARS;
+  const body = oneImage * MAX_IMAGES + 8 * 1024;
+  assert.ok(body < MAX_STORYBOARD_BODY_BYTES);
+  assert.ok(oneImage <= Math.ceil((MAX_IMAGE_BYTES * 4) / 3) + 64);
+  // The browser resizes to this many characters (public/js/main.js). Keep the two in step.
+  assert.ok(510_000 <= oneImage);
 });
 
 test('validateStoryboardRequest enforces the request contract', () => {

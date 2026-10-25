@@ -8,7 +8,10 @@ export const CHARACTER_IDS = ['A', 'B'];
 
 export const MAX_PROMPT_CHARS = 500;
 export const MAX_IMAGES = 6;
-export const MAX_IMAGE_BYTES = 600 * 1024;
+// Six images at this size, base64-encoded, plus JSON overhead stay under MAX_STORYBOARD_BODY_BYTES.
+// public/js/main.js must keep each data URL within MAX_IMAGE_DATA_URL_CHARS.
+export const MAX_IMAGE_BYTES = 380 * 1024;
+export const MAX_IMAGE_DATA_URL_CHARS = Math.ceil((MAX_IMAGE_BYTES * 4) / 3) + 32;
 export const MAX_TTS_CHARS = 300;
 export const MAX_SCENES = 8;
 export const MIN_SCENE_SEC = 1;

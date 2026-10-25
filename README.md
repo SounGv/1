@@ -33,7 +33,7 @@ scripts/        check_storyboard.js, check_quota.js
 5. **เพดานค่าใช้จ่าย** (เจ้าของโปรเจกต์ตั้งเอง)
    - Anthropic Console > Limits ตั้ง monthly spend limit
    - Google Cloud > Billing > Budgets & alerts ตั้งงบประมาณและการแจ้งเตือน และตั้ง quota ของ Text-to-Speech API (requests per minute / characters per day) ใน APIs & Services > Quotas
-6. **Vercel** import repo นี้ เลือก Framework Preset เป็น Other (ไม่ต้องมี build command, Vercel จะเสิร์ฟโฟลเดอร์ `public/` และฟังก์ชันใน `api/`) แล้วตั้ง Environment Variables ตามตารางด้านล่าง (ไม่ต้องใส่ `TEST_*`)
+6. **Vercel** import repo นี้ เลือก Framework Preset เป็น Other (ไม่ต้องมี build command, Vercel จะเสิร์ฟโฟลเดอร์ `public/` และฟังก์ชันใน `api/`) แล้วตั้ง Environment Variables ตามตารางด้านล่าง (ไม่ต้องใส่ `TEST_*`). `vercel.json` ให้ `api/storyboard.js` ทำงานได้ 60 วินาที เพราะมีการเรียก Claude ได้ 2 ครั้ง แพ็กเกจของ Vercel ต้องรองรับระยะเวลานี้
 7. ดีพลอย แล้วทำรายการทดสอบมือในหัวข้อ "การตรวจสอบ"
 
 | ตัวแปร | ใช้ที่ | หมายเหตุ |

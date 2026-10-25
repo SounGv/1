@@ -25,7 +25,8 @@ const ADMIN_CONTACT = { label: 'admin@example.com', href: 'mailto:admin@example.
 
 const MAX_IMAGES = 6;
 const MAX_IMAGE_SIDE = 1024;
-const MAX_IMAGE_DATA_URL_CHARS = 780_000;
+// Stays under MAX_IMAGE_DATA_URL_CHARS in api/_lib/validate.js so six images fit the body limit.
+const MAX_IMAGE_DATA_URL_CHARS = 510_000;
 const MAX_PROMPT_CHARS = 500;
 const MAX_TTS_CHARS = 300;
 const CHARS_PER_SECOND = { th: 12, en: 15 };
@@ -353,19 +354,24 @@ async function resizeImageFile(file) {
   const objectUrl = URL.createObjectURL(file);
   try {
     const source = await loadImage(objectUrl);
-    const scale = Math.min(1, MAX_IMAGE_SIDE / Math.max(source.naturalWidth, source.naturalHeight));
+    const longest = Math.max(source.naturalWidth, source.naturalHeight);
+    let side = Math.min(MAX_IMAGE_SIDE, longest);
     const canvas = document.createElement('canvas');
-    canvas.width = Math.max(1, Math.round(source.naturalWidth * scale));
-    canvas.height = Math.max(1, Math.round(source.naturalHeight * scale));
     const ctx = canvas.getContext('2d');
-    ctx.drawImage(source, 0, 0, canvas.width, canvas.height);
-    let dataUrl = '';
-    for (const quality of [0.85, 0.72, 0.6, 0.5]) {
-      dataUrl = canvas.toDataURL('image/jpeg', quality);
-      if (dataUrl.length <= MAX_IMAGE_DATA_URL_CHARS) break;
+    while (side >= 256) {
+      const scale = side / longest;
+      canvas.width = Math.max(1, Math.round(source.naturalWidth * scale));
+      canvas.height = Math.max(1, Math.round(source.naturalHeight * scale));
+      ctx.drawImage(source, 0, 0, canvas.width, canvas.height);
+      for (const quality of [0.85, 0.72, 0.6, 0.5, 0.4]) {
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        if (dataUrl.length <= MAX_IMAGE_DATA_URL_CHARS) {
+          return { dataUrl, image: await loadImage(dataUrl) };
+        }
+      }
+      side = Math.round(side * 0.75);
     }
-    if (dataUrl.length > MAX_IMAGE_DATA_URL_CHARS) throw new Error('image_too_large');
-    return { dataUrl, image: await loadImage(dataUrl) };
+    throw new Error('image_too_large');
   } finally {
     URL.revokeObjectURL(objectUrl);
   }
@@ -948,7 +954,7 @@ async function startRender() {
       state.ticket = { id: ticket.ticketId, expiresAt: ticket.expiresAt, used: false };
       if (state.me) {
         state.me.remaining = ticket.remaining;
-        state.me.used += 1;
+        state.me.used = state.me.monthlyQuota - ticket.remaining;
       }
       updateQuotaUI();
     }
