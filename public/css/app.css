@@ -1,27 +1,27 @@
 :root {
-  /* GV brand */
-  --gv-charcoal: #131516;
-  --gv-lime: #cdeb03;
-  --gv-olive: #4e5c00;
+  /* เล่าคลิป: warm paper, spruce ink, mist accent */
+  --ink: #1e3531;
+  --mist: #e4f2ea;
+  --link: #17675f;
 
   /* Light surfaces (text on these reaches >= 4.5:1) */
-  --color-bg: #f6f6f2;
-  --color-surface: #ffffff;
-  --color-text: var(--gv-charcoal);
-  --color-text-muted: #55594f;
-  --color-line: #dcddd5;
-  --color-line-strong: #b9bbb1;
-  --color-link: var(--gv-olive);
-  --color-selected-soft: #eef3cc;
+  --color-bg: #f6f3ee;
+  --color-surface: #fbf9f6;
+  --color-text: var(--ink);
+  --color-text-muted: #5e5a55;
+  --color-line: #e6e0d6;
+  --color-line-strong: #cfc6b8;
+  --color-link: var(--link);
+  --color-selected-soft: #e7f0ec;
 
   /* Dark surfaces (stage, bottom bar, rendering) */
-  --color-dark: var(--gv-charcoal);
-  --color-dark-raised: #222527;
-  --color-dark-line: #474b4d;
-  --color-on-dark: #ffffff;
-  --color-on-dark-muted: #b8bcb3;
-  --color-accent: var(--gv-lime);
-  --color-on-accent: var(--gv-charcoal);
+  --color-dark: var(--ink);
+  --color-dark-raised: #2a4641;
+  --color-dark-line: #45615c;
+  --color-on-dark: #f7f4ee;
+  --color-on-dark-muted: #c5d0cb;
+  --color-accent: var(--mist);
+  --color-on-accent: var(--ink);
 
   /* Status (always paired with an icon) */
   --color-danger: #a8231b;
@@ -32,15 +32,15 @@
   --color-info-bg: #e7f0f6;
 
   /* Canvas palette read by renderer.js */
-  --canvas-empty-1: #e7e9dc;
-  --canvas-empty-2: #dfe6ea;
-  --canvas-caption-bg: rgba(19, 21, 22, 0.86);
-  --canvas-caption-text: #ffffff;
-  --canvas-stage-bg: #2a2d2f;
+  --canvas-empty-1: #e7efe9;
+  --canvas-empty-2: #ebe4d8;
+  --canvas-caption-bg: rgba(30, 53, 49, 0.88);
+  --canvas-caption-text: #f7f4ee;
+  --canvas-stage-bg: #2c4540;
 
-  --backdrop: rgba(19, 21, 22, 0.55);
-  --spinner-track-on-accent: rgba(19, 21, 22, 0.25);
-  --sheet-shadow: 0 -8px 32px rgba(19, 21, 22, 0.18);
+  --backdrop: rgba(30, 53, 49, 0.48);
+  --spinner-track-on-accent: rgba(30, 53, 49, 0.22);
+  --sheet-shadow: 0 -8px 32px rgba(30, 53, 49, 0.16);
 
   /* Radius hierarchy: sheet > stage/bar > tiles/inputs > chips */
   --radius-sheet: 24px;
@@ -87,7 +87,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
 button:disabled { cursor: not-allowed; }
 
-:focus-visible { outline: 3px solid var(--gv-olive); outline-offset: 2px; }
+:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
 .screen-dark :focus-visible,
 .stage :focus-visible,
 .bottom-bar :focus-visible { outline-color: var(--color-accent); }
@@ -149,7 +149,16 @@ button:disabled { cursor: not-allowed; }
   min-height: 56px;
   padding: calc(6px + env(safe-area-inset-top)) var(--page-pad) 6px;
 }
-.app-name { font-weight: 700; font-size: 17px; margin-right: auto; white-space: nowrap; }
+.app-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 17px;
+  margin-right: auto;
+  white-space: nowrap;
+}
+.app-mark { width: 28px; height: 28px; flex: none; }
 .topbar .back-button { margin-right: auto; }
 
 .quota-pill {
@@ -324,7 +333,7 @@ button:disabled { cursor: not-allowed; }
   min-height: 96px;
   line-height: 1.65;
 }
-.line-input:focus { outline: none; border-bottom-color: var(--gv-olive); box-shadow: 0 2px 0 var(--gv-olive); }
+.line-input:focus { outline: none; border-bottom-color: var(--link); box-shadow: 0 2px 0 var(--link); }
 .line-input::placeholder { color: var(--color-text-muted); }
 
 .field-meta {
@@ -505,7 +514,7 @@ button:disabled { cursor: not-allowed; }
   width: 24px;
   height: 24px;
   margin: 2px 0 0;
-  accent-color: var(--gv-charcoal);
+  accent-color: var(--ink);
 }
 
 .policy { margin-top: 8px; }
@@ -708,7 +717,7 @@ button:disabled { cursor: not-allowed; }
   opacity: 0;
   cursor: pointer;
 }
-.scene-thumb:focus-within { outline: 3px solid var(--gv-olive); outline-offset: 2px; }
+.scene-thumb:focus-within { outline: 3px solid var(--link); outline-offset: 2px; }
 
 .scene-controls { display: grid; gap: var(--gap); }
 .chip-small { min-height: var(--tap); padding: 0 12px; font-size: 15px; }
@@ -736,7 +745,7 @@ button:disabled { cursor: not-allowed; }
   font-weight: 500;
 }
 .pill-select select:focus { outline: none; }
-.pill-select:focus-within { outline: 3px solid var(--gv-olive); outline-offset: 2px; }
+.pill-select:focus-within { outline: 3px solid var(--link); outline-offset: 2px; }
 
 .scene-line {
   display: block;
