@@ -4,17 +4,17 @@
 export const SKIN_TONES = ['#f6d8c3', '#ecc09f', '#d49b72', '#b07650', '#875838', '#5c3a25'];
 
 const COLORS = {
-  outline: '#1e3531',
+  outline: '#050505',
   hairDark: '#2a201b',
   hairChild: '#3b2a20',
   hairGray: '#cfcfca',
-  eye: '#1e3531',
+  eye: '#050505',
   mouth: '#6f1f2b',
   tongue: '#d86a6f',
   blush: 'rgba(232, 112, 100, 0.28)',
-  glasses: '#1e3531',
-  shirtA: '#1f6a62',
-  shirtB: '#c4785a',
+  glasses: '#050505',
+  shirtA: '#0866ff',
+  shirtB: '#65676b',
   collar: '#f7f4ee',
 };
 

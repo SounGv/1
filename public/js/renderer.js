@@ -23,7 +23,7 @@ const LEAD_IN = 0.25;
 const SPEECH_DELAY = 0.2;
 const CROSSFADE = 0.35;
 const TAIL = 0.2;
-const FONT_FAMILY = '"IBM Plex Sans Thai", system-ui, sans-serif';
+const FONT_FAMILY = '"Noto Sans Thai Looped", system-ui, sans-serif';
 
 export class RenderAbortedError extends Error {
   constructor(reason) {
