@@ -1,0 +1,17 @@
+{
+  "name": "clip-maker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "check": "npm run check:storyboard && npm run check:quota",
+    "check:storyboard": "node --test scripts/check_storyboard.js",
+    "check:quota": "node --test scripts/check_quota.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.117.3"
+  }
+}

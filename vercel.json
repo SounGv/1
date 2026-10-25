@@ -1,0 +1,6 @@
+{
+  "functions": {
+    "api/storyboard.js": { "maxDuration": 60 },
+    "api/tts.js": { "maxDuration": 30 }
+  }
+}

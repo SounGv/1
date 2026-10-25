@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#0866ff">
+  <title>เล่าคลิป</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+  <script type="module" src="/js/main.js"></script>
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-mark" viewBox="0 0 32 32">
+      <rect width="32" height="32" rx="8" fill="var(--color-accent)"/>
+      <path d="M13 10.2l8 5.8-8 5.8z" fill="var(--color-on-accent)"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="16.8" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.5" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-pending" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3.2"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M14.5 5.5L8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="M4.5 17l5-4.5 3.5 3 2.5-2 4 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-voice" viewBox="0 0 24 24"><rect x="9" y="3.5" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 11a6.5 6.5 0 0013 0M12 17.5v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3.5 8a2 2 0 002-2h13a2 2 0 002 2v2a2 2 0 000 4v2a2 2 0 00-2 2h-13a2 2 0 00-2-2v-2a2 2 0 000-4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-record" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 10.5l5-3v9l-5-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-convert" viewBox="0 0 24 24"><path d="M5 9h12l-3-3M19 15H7l3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-offline" viewBox="0 0 24 24"><path d="M2.5 9a14 14 0 0119 0M5.5 12.5a9.5 9.5 0 0113 0M9 16a4.5 4.5 0 016 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M3.5 3.5l17 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-contact" viewBox="0 0 24 24"><path d="M4 6.5h16v11H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4.5 7l7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <div class="offline-banner" id="offline-banner" role="status" hidden>
+    <svg class="icon" aria-hidden="true"><use href="#i-offline"/></svg>
+    <span>ไม่มีการเชื่อมต่ออินเทอร์เน็ต ขั้นตอนที่ต้องใช้เน็ตจะทำได้เมื่อกลับมาออนไลน์</span>
+  </div>
+
+  <main id="app">
+    <!-- Loading -->
+    <section class="screen screen-center" data-screen="loading" aria-busy="true">
+      <span class="spinner" aria-hidden="true"></span>
+      <p>กำลังโหลด</p>
+    </section>
+
+    <!-- Login -->
+    <section class="screen" data-screen="login" hidden>
+      <header class="topbar"><span class="app-name"><svg class="app-mark" aria-hidden="true"><use href="#i-mark"/></svg>เล่าคลิป</span></header>
+      <div class="stage stage-hero">
+        <div class="hero-frame"><canvas id="hero-canvas" aria-hidden="true"></canvas></div>
+        <h1 class="hero-title">เล่าเรื่องของคุณเป็นคลิปสั้น พร้อมเสียงพากย์</h1>
+        <p class="hero-text">พิมพ์เรื่อง แนบภาพ เลือกตัวละคร แล้วได้ไฟล์ MP4 ไปโพสต์ต่อได้ทันที ใช้ได้ 10 คลิปต่อเดือน</p>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <label class="check-row">
+            <input type="checkbox" id="consent-checkbox">
+            <span>ฉันยอมรับข้อตกลงการใช้งานและนโยบายความเป็นส่วนตัว ยินยอมให้เก็บอีเมลและชื่อจากบัญชี Google และยินยอมให้ส่งข้อความและภาพที่แนบไปให้ผู้ให้บริการ AI ประมวลผลเพื่อสร้างคลิป</span>
+          </label>
+          <details class="policy">
+            <summary>อ่านข้อตกลงและนโยบาย <span class="badge">ตัวอย่าง</span></summary>
+            <div class="policy-body">
+              <p><strong>ข้อตกลงการใช้งาน (ตัวอย่าง)</strong> ผู้ใช้ต้องใช้บริการสร้างคลิปอย่างสุจริต ไม่สร้างเนื้อหาหลอกลวง แอบอ้างบุคคลอื่น หรือผิดกฎหมาย และรับผิดชอบต่อภาพและข้อความที่ส่งเข้ามา</p>
+              <p><strong>นโยบายความเป็นส่วนตัว (ตัวอย่าง)</strong> เราเก็บอีเมลและชื่อจากบัญชี Google เพื่อยืนยันตัวตนและนับโควตา ข้อความและภาพที่แนบจะถูกส่งให้ผู้ให้บริการ AI ประมวลผลเพื่อสร้างสตอรีบอร์ดและเสียงพูด โดยเราไม่เก็บภาพ เสียง หรือคลิปไว้ที่เซิร์ฟเวอร์ ขอลบข้อมูลได้โดยติดต่อผู้ดูแล</p>
+              <p>ข้อความฉบับจริงจะกำหนดโดยเจ้าของโปรเจกต์</p>
+            </div>
+          </details>
+        </div>
+        <div class="notice notice-error" id="login-status" role="alert" hidden></div>
+      </div>
+      <div class="bottom-bar">
+        <button type="button" class="button-primary" id="login-button" disabled>เข้าสู่ระบบด้วย Google</button>
+        <p class="bottom-note" id="login-note">ติ๊กยอมรับข้อตกลงด้านบนก่อนเข้าสู่ระบบ</p>
+      </div>
+    </section>
+
+    <!-- Create -->
+    <section class="screen" data-screen="create" hidden>
+      <header class="topbar">
+        <span class="app-name"><svg class="app-mark" aria-hidden="true"><use href="#i-mark"/></svg>เล่าคลิป</span>
+        <span class="quota-pill" id="quota-pill"></span>
+        <button type="button" class="text-button" data-action="logout">ออกจากระบบ</button>
+      </header>
+
+      <div class="stage">
+        <div class="stage-frame-wrap">
+          <div class="stage-frame" id="stage-frame" data-ratio="9:16">
+            <canvas id="stage-canvas" aria-hidden="true"></canvas>
+            <p class="stage-bubble" aria-hidden="true">สวัสดี มาเล่าเรื่องกันเลย</p>
+          </div>
+        </div>
+        <div class="stage-controls">
+          <div role="group" aria-labelledby="duration-label">
+            <span class="visually-hidden" id="duration-label">ความยาวคลิป</span>
+            <div class="chip-row" id="duration-chips">
+              <button type="button" class="chip chip-dark" data-duration="5" aria-pressed="true">5 วิ</button>
+              <button type="button" class="chip chip-dark" data-duration="10" aria-pressed="false">10 วิ</button>
+              <button type="button" class="chip chip-dark" data-duration="15" aria-pressed="false">15 วิ</button>
+              <button type="button" class="chip chip-dark" data-duration="30" aria-pressed="false">30 วิ</button>
+            </div>
+          </div>
+          <div role="group" aria-labelledby="ratio-label">
+            <span class="visually-hidden" id="ratio-label">สัดส่วนภาพ</span>
+            <div class="chip-row" id="ratio-chips">
+              <button type="button" class="chip chip-dark" data-ratio="9:16" aria-pressed="true">แนวตั้ง 9:16</button>
+              <button type="button" class="chip chip-dark" data-ratio="16:9" aria-pressed="false">แนวนอน 16:9</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rows">
+        <div class="row">
+          <label class="row-title" for="prompt-input">เรื่องที่จะเล่า</label>
+          <textarea id="prompt-input" class="line-input" rows="3" maxlength="500" placeholder="เช่น แนะนำเมนูชาไทยปั่นของร้าน ราคา 45 บาท เปิดทุกวัน 8 โมงเช้า"></textarea>
+          <p class="field-meta"><span class="num" id="prompt-count">0/500</span></p>
+        </div>
+
+        <div class="row">
+          <div class="row-head">
+            <span class="row-title" id="images-title">ภาพประกอบ</span>
+            <span class="row-hint">ไม่บังคับ สูงสุด 6 ภาพ</span>
+          </div>
+          <div class="image-strip" id="image-strip" role="list" aria-labelledby="images-title"></div>
+          <input type="file" id="image-input" accept="image/jpeg,image/png,image/webp" multiple hidden>
+          <p class="empty-note" id="images-empty">
+            <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+            <span>ยังไม่มีภาพ คลิปจะใช้พื้นหลังสีเรียบแทน</span>
+          </p>
+        </div>
+
+        <div class="row">
+          <span class="row-title" id="characters-title">ตัวละครและเสียงพากย์</span>
+          <div class="character-tiles" id="character-tiles" aria-labelledby="characters-title"></div>
+        </div>
+
+        <div class="row">
+          <label class="switch-row">
+            <span class="switch-text">
+              <span class="row-title">เสียงเอฟเฟกต์</span>
+              <span class="row-hint">เสียงสั้น ๆ ตอนเริ่มแต่ละฉาก</span>
+            </span>
+            <input type="checkbox" class="switch" id="sfx-switch" role="switch" checked>
+          </label>
+        </div>
+
+        <div class="row" id="rights-row" hidden>
+          <label class="check-row">
+            <input type="checkbox" id="rights-checkbox">
+            <span>ภาพที่แนบเป็นของฉันหรือได้รับอนุญาตให้ใช้ และบุคคลในภาพยินยอมให้นำมาทำคลิป</span>
+          </label>
+        </div>
+
+        <div class="notice notice-error" id="create-status" role="alert" hidden></div>
+      </div>
+
+      <div class="bottom-bar">
+        <button type="button" class="button-primary" id="storyboard-button">สร้างสตอรีบอร์ด</button>
+        <p class="bottom-note">ขั้นนี้ยังไม่หักโควตา</p>
+      </div>
+    </section>
+
+    <!-- Storyboard -->
+    <section class="screen" data-screen="storyboard" hidden>
+      <header class="topbar">
+        <button type="button" class="text-button back-button" data-action="back-to-create">
+          <svg class="icon" aria-hidden="true"><use href="#i-back"/></svg>
+          <span>แก้ข้อมูล</span>
+        </button>
+        <span class="quota-pill" data-quota-pill></span>
+      </header>
+      <div class="page-intro">
+        <h1>ตรวจสตอรีบอร์ด</h1>
+        <p>แตะบทพูดเพื่อแก้ไข เปลี่ยนผู้พูด ภาพ และเสียงเอฟเฟกต์ของแต่ละฉากได้ก่อนสร้างคลิป</p>
+      </div>
+      <ol class="timeline" id="timeline"></ol>
+      <div class="rows">
+        <div class="notice" id="storyboard-status" role="alert" hidden></div>
+      </div>
+      <div class="bottom-bar">
+        <button type="button" class="button-primary" id="render-button">สร้างคลิป หักโควตา 1 ครั้ง</button>
+        <p class="bottom-note num" id="render-note"></p>
+      </div>
+    </section>
+
+    <!-- Rendering -->
+    <section class="screen screen-dark" data-screen="rendering" hidden>
+      <div class="render-layout">
+        <h1>กำลังสร้างคลิป</h1>
+        <div class="render-preview" id="render-preview"></div>
+        <ol class="steps" id="render-steps">
+          <li data-step="ticket"><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg><span class="step-text">ออกตั๋วเรนเดอร์</span><span class="step-state"></span></li>
+          <li data-step="voice"><svg class="icon" aria-hidden="true"><use href="#i-voice"/></svg><span class="step-text">สร้างเสียงพูด</span><span class="step-state"></span></li>
+          <li data-step="record"><svg class="icon" aria-hidden="true"><use href="#i-record"/></svg><span class="step-text">อัดคลิปแบบเรียลไทม์</span><span class="step-state"></span></li>
+          <li data-step="convert" hidden><svg class="icon" aria-hidden="true"><use href="#i-convert"/></svg><span class="step-text">แปลงเป็น MP4</span><span class="step-state"></span></li>
+        </ol>
+        <div class="progress" role="progressbar" aria-label="ความคืบหน้า" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="render-progress">
+          <div class="progress-fill" id="render-progress-fill"></div>
+        </div>
+        <p class="render-detail num" id="render-detail" aria-live="polite"></p>
+        <div class="stay-warning">
+          <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+          <p>อยู่หน้านี้จนเสร็จ ห้ามสลับแอปหรือปิดหน้าจอ ถ้าการอัดหยุดลง ลองใหม่ได้ด้วยตั๋วเดิมโดยไม่หักโควตาเพิ่ม</p>
+        </div>
+        <button type="button" class="button-outline-dark" id="cancel-render-button">ยกเลิก</button>
+      </div>
+    </section>
+
+    <!-- Done -->
+    <section class="screen" data-screen="done" hidden>
+      <header class="topbar">
+        <span class="app-name"><svg class="app-mark" aria-hidden="true"><use href="#i-mark"/></svg>เล่าคลิป</span>
+        <span class="quota-pill" data-quota-pill></span>
+      </header>
+      <div class="page-intro">
+        <h1 class="title-with-icon"><svg class="icon icon-ok" aria-hidden="true"><use href="#i-check"/></svg>คลิปพร้อมแล้ว</h1>
+        <p>กดเล่นเพื่อตรวจ แล้วดาวน์โหลดเก็บไว้ คลิปไม่ถูกเก็บในระบบ ถ้าออกจากหน้านี้ต้องสร้างใหม่</p>
+      </div>
+      <div class="result-video-wrap"><video id="result-video" controls playsinline></video></div>
+      <div class="rows">
+        <div class="row row-actions">
+          <button type="button" class="button-secondary" data-action="back-to-storyboard">แก้สตอรีบอร์ดแล้วสร้างใหม่ด้วยตั๋วเดิม</button>
+          <button type="button" class="button-secondary" data-action="new-clip">เริ่มคลิปใหม่</button>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <a class="button-primary" id="download-link" href="#" download>
+          <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+          <span>ดาวน์โหลดคลิป</span>
+        </a>
+        <p class="bottom-note num" id="download-note"></p>
+      </div>
+    </section>
+
+    <!-- Quota exhausted -->
+    <section class="screen" data-screen="quota" hidden>
+      <header class="topbar"><span class="app-name"><svg class="app-mark" aria-hidden="true"><use href="#i-mark"/></svg>เล่าคลิป</span></header>
+      <div class="state-block">
+        <svg class="state-icon" aria-hidden="true"><use href="#i-alert"/></svg>
+        <h1>ใช้โควตาเดือนนี้ครบแล้ว</h1>
+        <p class="num" id="quota-message"></p>
+        <div class="contact-box">
+          <svg class="icon" aria-hidden="true"><use href="#i-contact"/></svg>
+          <div>
+            <p>ต้องการเพิ่มโควตา ติดต่อผู้ดูแล <span class="badge">ตัวอย่าง</span></p>
+            <p id="admin-contact"></p>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <button type="button" class="button-primary" data-action="back-to-create">กลับไปหน้าสร้างคลิป</button>
+        <p class="bottom-note">สตอรีบอร์ดที่ทำไว้ยังอยู่ ใช้ต่อได้เมื่อโควตารีเซ็ต</p>
+      </div>
+    </section>
+
+    <!-- Error -->
+    <section class="screen" data-screen="error" hidden>
+      <header class="topbar"><span class="app-name"><svg class="app-mark" aria-hidden="true"><use href="#i-mark"/></svg>เล่าคลิป</span></header>
+      <div class="state-block">
+        <svg class="state-icon" aria-hidden="true"><use href="#i-alert"/></svg>
+        <h1 id="error-title">เกิดข้อผิดพลาด</h1>
+        <p id="error-message"></p>
+        <button type="button" class="button-secondary" id="error-secondary" hidden></button>
+      </div>
+      <div class="bottom-bar">
+        <button type="button" class="button-primary" id="error-primary">ลองอีกครั้ง</button>
+        <p class="bottom-note" id="error-note"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Character editor bottom sheet -->
+  <div class="sheet" id="character-sheet" hidden>
+    <div class="sheet-backdrop" data-sheet-close></div>
+    <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <div class="sheet-head">
+        <canvas class="sheet-avatar" id="sheet-avatar" aria-hidden="true"></canvas>
+        <h2 id="sheet-title">ตัวละคร A</h2>
+      </div>
+      <fieldset class="field-group">
+        <legend>เพศ</legend>
+        <div class="chip-row" data-field="gender">
+          <button type="button" class="chip" data-value="female">หญิง</button>
+          <button type="button" class="chip" data-value="male">ชาย</button>
+        </div>
+      </fieldset>
+      <fieldset class="field-group">
+        <legend>ช่วงอายุ</legend>
+        <div class="chip-row" data-field="ageGroup">
+          <button type="button" class="chip" data-value="child">เด็ก</button>
+          <button type="button" class="chip" data-value="teen">วัยรุ่น</button>
+          <button type="button" class="chip" data-value="adult">วัยทำงาน</button>
+          <button type="button" class="chip" data-value="senior">สูงวัย</button>
+        </div>
+      </fieldset>
+      <fieldset class="field-group">
+        <legend>โทนสีผิว</legend>
+        <div class="swatch-row" data-field="skinTone"></div>
+      </fieldset>
+      <fieldset class="field-group">
+        <legend>เสียงพากย์</legend>
+        <div class="chip-row" data-field="voiceLang">
+          <button type="button" class="chip" data-value="th">ภาษาไทย</button>
+          <button type="button" class="chip" data-value="en">ภาษาอังกฤษ</button>
+        </div>
+      </fieldset>
+      <div class="sheet-actions">
+        <button type="button" class="text-button text-button-danger" id="remove-character-button">ลบตัวละครนี้</button>
+        <button type="button" class="button-dark" data-sheet-close>เสร็จ</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
