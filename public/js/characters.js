@@ -121,7 +121,7 @@ function drawBody(ctx, spec, cx, bottom, bodyW, bodyH, neckW, neckTop) {
   ctx.rect(cx - neckW / 2, neckTop, neckW, top - neckTop + bodyH * 0.2);
   fillAndStroke(ctx, SKIN_TONES[spec.skinTone - 1]);
 
-  roundedRectPath(ctx, left, top, bodyW, bodyH + 2, bodyW * 0.32);
+  roundedRectPath(ctx, left, top, bodyW, bodyH * 1.3, bodyW * 0.32);
   fillAndStroke(ctx, shirt);
 
   ctx.beginPath();
@@ -143,7 +143,7 @@ function drawBody(ctx, spec, cx, bottom, bodyW, bodyH, neckW, neckTop) {
     fillAndStroke(ctx, COLORS.collar);
   } else if (spec.ageGroup === 'senior') {
     ctx.moveTo(cx, top + bodyH * 0.12);
-    ctx.lineTo(cx, bottom);
+    ctx.lineTo(cx, bottom + bodyH * 0.3);
     ctx.stroke();
     for (let i = 0; i < 3; i += 1) {
       ctx.beginPath();

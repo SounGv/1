@@ -216,9 +216,9 @@ function drawHero() {
   const canvas = $('#hero-canvas');
   const { ctx, width, height } = sizeCanvasToElement(canvas);
   ctx.clearRect(0, 0, width, height);
-  const size = height * 0.92;
-  drawCharacter(ctx, { id: 'A', gender: 'female', ageGroup: 'adult', skinTone: 2, voiceLang: 'th' }, width * 0.36, height + 4, size, 0.4, 0.6);
-  drawCharacter(ctx, { id: 'B', gender: 'male', ageGroup: 'senior', skinTone: 4, voiceLang: 'th' }, width * 0.66, height + 4, size, 0, 0.6);
+  const size = height * 0.86;
+  drawCharacter(ctx, { id: 'A', gender: 'female', ageGroup: 'adult', skinTone: 2, voiceLang: 'th' }, width * 0.28, height + 4, size, 0.4, 0.6);
+  drawCharacter(ctx, { id: 'B', gender: 'male', ageGroup: 'senior', skinTone: 4, voiceLang: 'th' }, width * 0.72, height + 4, size, 0, 0.6);
 }
 
 function bindLogin() {
@@ -297,8 +297,8 @@ function drawStagePreview() {
 
   const characters = state.form.characters;
   const portrait = state.form.ratio === '9:16';
-  const size = portrait ? height * 0.5 : height * 0.8;
-  const slots = characters.length === 2 ? [0.3, 0.7] : [0.5];
+  const size = portrait ? height * 0.5 : height * 0.66;
+  const slots = characters.length === 2 ? (portrait ? [0.3, 0.7] : [0.22, 0.78]) : [0.5];
   characters.forEach((spec, i) => {
     drawCharacter(ctx, spec, width * slots[i], height + size * 0.04, size, i === 0 ? 0.35 : 0, 0.6);
   });

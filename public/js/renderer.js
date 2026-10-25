@@ -13,7 +13,7 @@ const LAYOUTS = {
     characterSize: 380, slots: { 1: [0.5], 2: [0.29, 0.71] },
   },
   '16:9': {
-    safeBottom: 56, captionHeight: 170, captionFont: 36, captionMaxLines: 3, captionPadX: 120,
+    safeBottom: 56, captionHeight: 170, captionFont: 42, captionMaxLines: 3, captionPadX: 120,
     characterSize: 290, slots: { 1: [0.84], 2: [0.15, 0.85] },
   },
 };
@@ -36,6 +36,7 @@ export class RenderAbortedError extends Error {
 const MIME_CANDIDATES = [
   { mimeType: 'video/mp4;codecs="avc1.42E01E,mp4a.40.2"', extension: 'mp4' },
   { mimeType: 'video/mp4;codecs=avc1,mp4a.40.2', extension: 'mp4' },
+  { mimeType: 'video/mp4;codecs=avc1,opus', extension: 'mp4' },
   { mimeType: 'video/mp4', extension: 'mp4' },
   { mimeType: 'video/webm;codecs=vp9,opus', extension: 'webm' },
   { mimeType: 'video/webm;codecs=vp8,opus', extension: 'webm' },
